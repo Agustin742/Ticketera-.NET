@@ -9,6 +9,7 @@ namespace WebApplication1.Data
 
         public DbSet<Usuario> Usuarios => Set<Usuario>();
         public DbSet<Ticket> Tickets => Set<Ticket>();
+        public DbSet<Comentario> Comentarios => Set<Comentario>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,6 +23,11 @@ namespace WebApplication1.Data
                 .Property(t => t.Estado)
                 .HasConversion<String>()
                 .HasMaxLength(20);
+            modelBuilder.Entity<Comentario>()
+                .HasOne(c => c.Usuario)
+                .WithMany()
+                .HasForeignKey(c => c.UsuarioId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
