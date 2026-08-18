@@ -1,0 +1,43 @@
+@host = http://localhost:5284
+
+### Listar tickets
+GET {{host}}/api/tickets
+Accept: application/json
+
+### Crear ticket
+POST {{host}}/api/tickets
+Content-Type: application/json
+
+{
+  "titulo": "No carga el dashboard",
+  "descripcion": "Tira 500 al entrar",
+  "usuarioId": 1
+}
+
+### Obtener por id
+GET {{host}}/api/tickets/1
+
+### Actualizar
+PUT {{host}}/api/tickets/1
+Content-Type: application/json
+
+{
+  "titulo": "No carga el dashboard",
+  "descripcion": "Tira 500 al entrar",
+  "estado": "EnProgreso"
+}
+
+### Eliminar
+DELETE {{host}}/api/tickets/1
+
+### Registro
+POST {{host}}/api/auth/registro?nombre=Agustin&email=agus@test.com&password=123456
+
+### Login
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "agus@test.com",
+  "password": "123456"
+}
